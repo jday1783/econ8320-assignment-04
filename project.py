@@ -1,3 +1,19 @@
+#si-matrix
+
+import pdb
+
+""" 
+
+This class is intended to create a way to store the values and shape of a 
+matrix. The matrix can be imported as a list (matrix with single column, 
+or vector), or as a list of lists (2-dimensional matrices) via the value argument. 
+The class includes
+an __init__ function to read in the matrix, or create a matrix of 1's of a 
+specific dimensionality. The class also includes a __repr__ function to 
+designate the method for printing the matrix to screen.
+
+"""
+
 class Matrix(object):
     """ 
     Read the matrix and store as part of the class object
@@ -29,14 +45,14 @@ class Matrix(object):
                     self.shape = (len(value), 1)
             else:
                 matrix = []
-                for i in range(dim): 
-                    row = []
-                    for j in range(dim): 
-                        row.append(1)
-                    matrix.append(row)
-
-                self.value = matrix
-                self.shape = dim
+                for i in range(dim[0]):
+                        row = []
+                        for j in range(dim[1]):
+                            row.append(1)
+                        matrix.append(row)
+                                
+                value = matrix
+                shape = dim
     
     def __repr__(self):
         string = " "
@@ -53,6 +69,3 @@ class Matrix(object):
                     string += str(self.value[i][j]) + " "
                 string += "]\n\n"
         return string
-
-    
-   
