@@ -1,0 +1,64 @@
+class Matrix(object):
+    
+    def _init__ (self, value= [], dim = (1,1)):
+        if isinstance(value, list):
+            if len(value) > 0: 
+                if isinstance(value, (int, float)):
+                    row = (int, float)
+                else:
+                    row = type(value)
+
+                for i in value:
+                    if not isinsntance(i, (int, float, list)):
+                        raise RunTimeError("Matrix is invalid. Please ensure that all elements share a type.")
+
+                if row == list: 
+                    lenInnter = len(value)
+                    for i in value:
+                        if len(i) != lenInner:
+                                raise RunTimeError("Matrix is invalid. Please ensure that all elements share a type.")
+                self.value = value
+                try:
+                    self.shape = (len(value)), (len(value))
+                except:
+                    self.shape = (len(value, 1))
+            else:
+                self.value = value
+                self.shape = (len(value), 1)
+        else:
+            matrix = []
+            for i in range(dim):
+                    row = []
+            for j in range(dim):
+                    row.append(1)
+            matrix.append(row)
+
+            value = matrix
+            shape = dim
+
+def __repr__(self):
+    string= " "
+    for i in range(self.shape):
+        if self.shape > 1:
+            if i < self.shape - 1:
+                string += "[ "
+            for j in range(self.shape):
+                string += str(self.value[i][j]) + " "
+            string +="]\n" 
+        else:
+            string += "["
+            for j in range(self.shape):
+                string += str(self.value[i][j]) + " "
+                string += "[\n\n"
+    return string
+
+matrixList = [[4,6,1,9,10,12,1,7],
+			  [1,2,3,4,5,6,7,8],
+			  [19,0,3,1,10,15,-1,-1]]
+
+      mat2 = Matrix(matrixList)
+
+
+
+
+                
