@@ -1,64 +1,110 @@
+#si-matrix
+
+import pdb
+
+""" 
+
+This class is intended to create a way to store the values and shape of a 
+matrix. The matrix can be imported as a list (matrix with single column, 
+or vector), or as a list of lists (2-dimensional matrices) via the value argument. 
+The class includes
+an __init__ function to read in the matrix, or create a matrix of 1's of a 
+specific dimensionality. The class also includes a __repr__ function to 
+designate the method for printing the matrix to screen.
+
+"""
+
 class Matrix(object):
-    
-    def _init__ (self, value= [], dim = (1,1)):
-        if isinstance(value, list):
-            if len(value) > 0: 
-                if isinstance(value, (int, float)):
-                    row = (int, float)
-                else:
-                    row = type(value)
+    """ 
+    Read the matrix and store as part of the class object
+    """
+    def __init__(self, value = [], dim =(1,1)):
+        ##Changed value from a dictionary {} to list []
+        ## Unitendented
+        # I changed this because the isisntance function checks to see if the Class contains the right data
+        # for example, isinstance checks the (value) to see if it contains a list
+        # I can add (int) or (float) to ensure integers and floats can be input into the list
 
-                for i in value:
-                    if not isinsntance(i, (int, float, list)):
-                        raise RunTimeError("Matrix is invalid. Please ensure that all elements share a type.")
+        ## Changed is to == 
+        if type(value[0]) == int or type(value[0]) == float:
+            row = (int, float)
+        ## Unindented else
+        else:
+            row = type(value[0])
+        
+        for i in value:
+        ## Changed is not to != and unindented for and if statement
+        ## removed the commas and added "or" statement
+            if type(i) != int or type(i) != float or type(i) != list:
+             raise RuntimeError("Matrix is invalid. Please ensure that all elements share a type.")
 
-                if row == list: 
-                    lenInnter = len(value)
-                    for i in value:
-                        if len(i) != lenInner:
-                                raise RunTimeError("Matrix is invalid. Please ensure that all elements share a type.")
+        if row == list:
+            lenInner = len(value[0])
+            for i in value:
+                    ## I added != insated "is not"
+                if len(i) != lenInner:
+                        raise RuntimeError("Matrix is invalid. Please ensure that all rows have uniform length.")
+                    ## I unindented the line below
+            for j in i:
+                    ## I added != instead of "is not"
+                if type(j) != int and type(j) != float:
+                        raise RuntimeError("Matrix is invalid. Please ensure that all elements are numeric (either float or int).")
+
                 self.value = value
                 try:
-                    self.shape = (len(value)), (len(value))
+                    self.shape = (len(value), len(value[0]))
                 except:
-                    self.shape = (len(value, 1))
-            else:
-                self.value = value
-                self.shape = (len(value), 1)
-        else:
-            matrix = []
-            for i in range(dim):
-                    row = []
-            for j in range(dim):
-                    row.append(1)
-            matrix.append(row)
+                    self.shape = (len(value), 1)
+                ## I removed the : from the if statement and removed the spacing between the if statement and matrix = []
+                ## I added the : to the end of [] and input == instead of = 
+            if matrix == []:
+                for i in range(dim[0]):
+                        row = []
+                        for j in range(dim[1]):
+                            row.append(1)
+                        matrix.append(row)
+                                
+                value = matrix
+                shape = dim
+    
+"""Print the matrix to screen"""
 
-            value = matrix
-            shape = dim
-
+## Unindented def and all of the lines beneath it. Added : after (self)
 def __repr__(self):
-    string= " "
-    for i in range(self.shape):
-        if self.shape > 1:
-            if i < self.shape - 1:
+    string = "  "
+    for i in range(shape[0]):
+        if shape[1]>1:
+            if i < shape[0]-1:
                 string += "[ "
-            for j in range(self.shape):
-                string += str(self.value[i][j]) + " "
-            string +="]\n" 
+## unindented j and the lines below   
+    for j in range(shape[1]):
+        string += str(value[i][j]) + " "
+        string += "]\n  "
+## unindented string += "["
+    else:
+            string += "[ "
+    for j in range(shape[1]):
+            string += str(value[i][j]) + " "
+## unindented else and lines below
+    else:
+        if shape[0]==1:
+            string += "[ "
+    if i < shape[0]-1:
+        if shape[1]>1:
+            string += "[ "
+            string += str(value[i]) + "\n  "
         else:
-            string += "["
-            for j in range(self.shape):
-                string += str(self.value[i][j]) + " "
-                string += "[\n\n"
-    return string
+            string += str(value[i]) + " "
+    if shape[1]>1:
+        string += "]\n\n"
+        return string
 
 matrixList = [[4,6,1,9,10,12,1,7],
 			  [1,2,3,4,5,6,7,8],
 			  [19,0,3,1,10,15,-1,-1]]
 
-      mat2 = Matrix(matrixList)
+mat2 = Matrix(matrixList)
+print(mat2)
 
 
 
-
-                
