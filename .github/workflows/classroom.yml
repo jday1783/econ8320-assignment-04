@@ -19,7 +19,7 @@ jobs:
       with:
         test-name: Test 10x10
         setup-command: ''
-        command: python -m unittest test10x10.py
+        command: python -m unittest tests/test10x10.py
         timeout: 1
         max-score: 1
     - name: Test 10x10 Size
@@ -28,7 +28,7 @@ jobs:
       with:
         test-name: Test 10x10 Size
         setup-command: ''
-        command: python -m unittest test10x10_size.py
+        command: python -m unittest tests/test10x10_size.py
         timeout: 1
         max-score: 1
     - name: Test 3x8
@@ -37,7 +37,7 @@ jobs:
       with:
         test-name: Test 3x8
         setup-command: ''
-        command: python -m unittest test3x8.py
+        command: python -m unittest tests/test3x8.py
         timeout: 1
         max-score: 1
     - name: Test 3x8 Size
@@ -46,7 +46,7 @@ jobs:
       with:
         test-name: Test 3x8 Size
         setup-command: ''
-        command: python -m unittest test3x8_size.py
+        command: python -m unittest tests/test3x8_size.py
         timeout: 1
         max-score: 1
     - name: Test Bad 1
@@ -55,7 +55,7 @@ jobs:
       with:
         test-name: Test Bad 1
         setup-command: ''
-        command: python -m unittest testBad1.py
+        command: python -m unittest tests/testBad1.py
         timeout: 1
         max-score: 1
     - name: Test Bad 2
@@ -64,7 +64,7 @@ jobs:
       with:
         test-name: Test Bad 2
         setup-command: ''
-        command: python -m unittest testBad2.py
+        command: python -m unittest tests/testBad2.py
         timeout: 1
         max-score: 1
     - name: Autograding Reporter
