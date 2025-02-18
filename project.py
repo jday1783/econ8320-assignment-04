@@ -44,9 +44,9 @@ class Matrix(object):
                     self.value = value
                     self.shape = (len(value), 1)
             else:
-                matrix = []
+                matrix = ()
                 for i in range(dim):
-                        row = []
+                        row = ()
                         for j in range(dim):
                             row.append(1)
                         matrix.append(row)
